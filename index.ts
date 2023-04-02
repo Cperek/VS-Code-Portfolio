@@ -1,4 +1,5 @@
 
+
 window.onload = function(){
     loadHTML("views/head.html","header");
     loadHTML("views/nav/top-system.html","system-top-nav");
@@ -30,7 +31,6 @@ xhttp.onreadystatechange = function() {
                     var script = document.createElement("script");
                     script.textContent = contentScript[x].textContent;
                     document.body.appendChild(script);
-                    console.log(contentScript[x].textContent);
                     }
                 }
 
@@ -47,3 +47,18 @@ xhttp.send();
 console.log("ERROR - file or element ID are empty!");
 }
 }
+
+
+function makeSnippet(element: Element,lang: string = 'markup'){
+
+        var snippet = element.innerHTML.replace(/</g,'&lt;');
+            snippet = snippet.replace(/ /g,'&nbsp;');
+        var code = '<pre class="language-'+lang+'"><code class="language-'+lang+'">'+snippet+'</pre></code>';
+        element.innerHTML = "";
+        element.insertAdjacentHTML('afterend',code);
+
+        if(window.Prism){
+            Prism.highlightAll(false);
+        }
+  };
+  

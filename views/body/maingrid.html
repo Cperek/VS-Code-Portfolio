@@ -5,16 +5,16 @@
                 <i class="codicon codicon-files" id="lefttab1"></i>
             </div>
             <div class="row">
-                <i class="codicon codicon-search" id="lefttab2"></i>
+                <i class="codicon codicon-file-code" id="lefttab2"></i>
             </div>
             <div class="row">
-                <i class="codicon codicon-git-branch" id="lefttab3"></i>
+                <i class="codicon codicon-mortar-board" id="lefttab3"></i>
             </div>
             <div class="row">
-                <i class="codicon codicon-debug-alt" id="lefttab4"></i>
+                <i class="codicon codicon-mail" id="lefttab4"></i>
             </div>
             <div class="row">
-                <i class="codicon codicon-extensions" id="lefttab5"></i>
+                <i class="codicon codicon-globe" id="lefttab5"></i>
             </div>
             <div class="row flexauto">
                 <i class="codicon codicon-github" id="lefttab6"></i>
@@ -30,7 +30,56 @@
             Explorer
         </div>
         <div class="col-md-9 content">
-            Column
+            <div>
+                <code id="snippet">public static function get_available_in_context_parameters() {
+    return new external_function_parameters (
+        array(
+            'contexts' => new external_multiple_structure(
+                new external_single_structure(
+                    array(
+                        'contextlevel' => new external_value(PARAM_ALPHA, 'The context level where the filters are:
+                            (coursecat, course, module)'),
+                        'instanceid' => new external_value(PARAM_INT, 'The instance id of item associated with the context.')
+                    )
+                ), 'The list of contexts to check.'
+            ),
+        )
+    );
+}
+
+/**
+    * Returns the filters available in the given contexts.
+    *
+    * @param array $contexts the list of contexts to check
+    * @return array with the filters information and warnings
+    * @since Moodle 3.4
+    */
+public static function get_available_in_context($contexts) {
+    $params = self::validate_parameters(self::get_available_in_context_parameters(), array('contexts' => $contexts));
+    $filters = $warnings = array();
+
+    foreach ($params['contexts'] as $contextinfo) {
+        try {
+            $context = self::get_context_from_params($contextinfo);
+            self::validate_context($context);
+            $contextinfo['contextid'] = $context->id;
+        } catch (Exception $e) {
+            $warnings[] = array(
+                'item' => 'context',
+                'itemid' => $contextinfo['instanceid'],
+                'warningcode' => $e->getCode(),
+                'message' => $e->getMessage(),
+            );
+            continue;
+        }
+        $contextfilters = filter_get_available_in_context($context);
+
+        foreach ($contextfilters as $filter) {
+            $filters[] = array_merge($contextinfo, (array) $filter);
+        }
+    }
+            </code>
+            </div>
         </div>
     </div>
 </div>
@@ -40,4 +89,12 @@
     if (index_icon !== null) {
         index_icon.classList.add("active");
     }
+
+    var github = document.getElementById("lefttab6");
+    if (github) {
+        github.addEventListener('click', function() {
+            window.open("https://github.com/Cperek", '_blank').focus();
+        });
+    }
+    makeSnippet(document.getElementById("snippet"), 'php');
 </script>
