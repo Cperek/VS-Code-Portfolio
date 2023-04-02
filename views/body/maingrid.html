@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="row gridheight">
+        <div class="col-md-1 leftmenu">
+            <div class="row">
+                <i class="codicon codicon-files" id="lefttab1"></i>
+            </div>
+            <div class="row">
+                <i class="codicon codicon-search" id="lefttab2"></i>
+            </div>
+            <div class="row">
+                <i class="codicon codicon-git-branch" id="lefttab3"></i>
+            </div>
+            <div class="row">
+                <i class="codicon codicon-debug-alt" id="lefttab4"></i>
+            </div>
+            <div class="row">
+                <i class="codicon codicon-extensions" id="lefttab5"></i>
+            </div>
+            <div class="row flexauto">
+                <i class="codicon codicon-github" id="lefttab6"></i>
+            </div>
+            <div class="row">
+                <i class="codicon codicon-account" id="lefttab7"></i>
+            </div>
+            <div class="row">
+                <i class="codicon codicon-settings-gear" id="lefttab8"></i>
+            </div>
+        </div>
+        <div class="col-md-2 explorer">
+            Explorer
+        </div>
+        <div class="col-md-9 content">
+            Column
+        </div>
+    </div>
+</div>
+<script>
+    var index_icon = document.getElementById("lefttab1");
+    console.log(index_icon);
+    if (index_icon !== null) {
+        index_icon.classList.add("active");
+    }
+</script>
