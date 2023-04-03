@@ -1,5 +1,6 @@
 
 
+
 window.onload = function(){
     loadHTML("views/head.html","header");
     loadHTML("views/nav/top-system.html","system-top-nav");
@@ -10,7 +11,7 @@ window.onload = function(){
 
 
 
-function loadHTML(file: string, elementID: string,loadScript: boolean = false) {
+async function loadHTML(file: string, elementID: string,loadScript: boolean = false) {
 if(file && elementID)
 {
 var xhttp = new XMLHttpRequest();
@@ -19,7 +20,7 @@ xhttp.onreadystatechange = function() {
         var element = document.getElementById(elementID);
         if(element)
         {
-        element.innerHTML =  this.responseText;
+        element.innerHTML =  this.response;
             if (loadScript === true) {
 
                 var contentScript: any = element.querySelectorAll("script");
@@ -50,10 +51,9 @@ console.log("ERROR - file or element ID are empty!");
 
 
 function makeSnippet(element: Element,lang: string = 'markup'){
-
         var snippet = element.innerHTML.replace(/</g,'&lt;');
             snippet = snippet.replace(/ /g,'&nbsp;');
-        var code = '<pre class="language-'+lang+'"><code class="language-'+lang+'">'+snippet+'</pre></code>';
+        var code = '<pre class="line-numbers language-'+lang+'"><code class="line-numbers language-'+lang+'">'+snippet+'</pre></code>';
         element.innerHTML = "";
         element.insertAdjacentHTML('afterend',code);
 
