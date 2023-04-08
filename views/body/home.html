@@ -1,0 +1,12 @@
+<div>
+    <code id="snippet"></code>
+</div>
+<script>
+    loadHTML("index.js", "snippet", false).then(
+        function() {
+            setTimeout(() => {
+                makeSnippet(document.getElementById("snippet"), 'js');
+            }, 50);
+        }
+    );
+</script>

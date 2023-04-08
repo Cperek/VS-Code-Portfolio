@@ -2,60 +2,103 @@
     <div class="row gridheight">
         <div class="col-md-1 leftmenu">
             <div class="row">
-                <i class="codicon codicon-files" id="lefttab1"></i>
+                <i class="codicon codicon-files load_content" data-load="home" id="home_nav"></i>
             </div>
             <div class="row">
-                <i class="codicon codicon-file-code" id="lefttab2"></i>
+                <i class="codicon codicon-file-code load_content" data-load="my_projects" id="my_projects_nav"></i>
             </div>
             <div class="row">
-                <i class="codicon codicon-mortar-board" id="lefttab3"></i>
+                <i class="codicon codicon-mortar-board load_content" data-load="my_skills" id="my_skills_nav"></i>
             </div>
             <div class="row">
-                <i class="codicon codicon-mail" id="lefttab4"></i>
+                <i class="codicon codicon-globe load_content" data-load="about_me" id="about_me_nav"></i>
             </div>
             <div class="row">
-                <i class="codicon codicon-globe" id="lefttab5"></i>
+                <i class="codicon codicon-mail load_content" data-load="contact" id="contact_nav"></i>
             </div>
             <div class="row flexauto">
-                <i class="codicon codicon-github" id="lefttab6"></i>
+                <i class="codicon codicon-github git"></i>
             </div>
             <div class="row">
-                <i class="codicon codicon-account" id="lefttab7"></i>
+                <i class="codicon codicon-account" id="me_nav"></i>
             </div>
             <div class="row">
-                <i class="codicon codicon-settings-gear" id="lefttab8"></i>
+                <i class="codicon codicon-settings-gear load_content" data-load="settings" id="settings_nav"></i>
             </div>
         </div>
-        <div class="col-md-2 explorer">
+        <div class="col-md-2 explorer" id="explorer">
             Explorer
-        </div>
-        <div class="col-md-9 content">
-            <div>
-                <code id="snippet"></code>
+            <div class="row mt-2 bold row-npad">
+
+                <p> <i class="codicon va-mid codicon-nostyle codicon-chevron-down"></i>Portfolio</p>
             </div>
+            <div class="row">
+                <a class="load_content explorer_btn" data-load="home" id="home"><img class="mr-02" src="assets/pix/html5.svg" width="12px">home.html</a>
+            </div>
+            <div class="row">
+                <a class="load_content explorer_btn" data-load="my_projects" id="my_projects"><img class="mr-02" src="assets/pix/js.svg" width="12px">my_projects.js</a>
+            </div>
+            <div class="row">
+                <a class="load_content explorer_btn" data-load="my_skills" id="my_skills"><img class="mr-02" src="assets/pix/css3.svg" width="12px">my_skills.css</a>
+            </div>
+            <div class="row">
+                <a class="load_content explorer_btn" data-load="about_me" id="about_me"><img class="mr-02" src="assets/pix/json.svg" width="12px">about_me.json</a>
+            </div>
+            <div class="row">
+                <a class="load_content explorer_btn" data-load="contact" id="contact"><img class="mr-02" src="assets/pix/php.svg" width="12px">contact.php</a>
+            </div>
+            <div class="row">
+                <a class="load_content explorer_btn" data-load="settings" id="settings"><img class="mr-02" src="assets/pix/env.svg" width="12px">settings.env</a>
+            </div>
+            <div class="row">
+                <a class="git"><img class="mr-02" src="assets/pix/git-alt.svg" width="12px">.git</a>
+            </div>
+        </div>
+        <div class="col-md-9 content" id="content">
+
         </div>
     </div>
 </div>
 <script>
-    var index_icon = document.getElementById("lefttab1");
-    console.log(index_icon);
+    var index_icon = document.getElementById("home_nav");
     if (index_icon !== null) {
         index_icon.classList.add("active");
+        loadHTML("views/body/home.html", "content", true);
+    }
+    var home_link = document.getElementById("home");
+    if (home_link !== null) {
+        home_link.classList.add("active");
     }
 
-    var github = document.getElementById("lefttab6");
+    var github = document.querySelectorAll(".git");
     if (github) {
-        github.addEventListener('click', function() {
-            window.open("https://github.com/Cperek", '_blank').focus();
+        github.forEach(element => {
+            element.addEventListener('click', function() {
+                window.open("https://github.com/Cperek", '_blank').focus();
+            });
         });
     }
-    //Ładowanie kodu źródłowego plików na serwerze
 
-    // loadHTML("index.js", "snippet", false).then(
-    //     function() {
-    //         setTimeout(() => {
-    //             makeSnippet(document.getElementById("snippet"), 'js');
-    //         }, 50);
-    //     }
-    // );
+    const load_content = document.querySelectorAll('.load_content');
+    if (load_content) {
+        load_content.forEach(element => {
+            element.addEventListener('click', function() {
+                loadHTML("views/body/" + element.dataset.load + ".html", "content", true);
+                var nav_i = document.getElementById(element.dataset.load + "_nav");
+                if (nav_i !== null) {
+                    document.querySelectorAll(".codicon").forEach(nav_item => {
+                        nav_item.classList.remove("active");
+                    });
+                    nav_i.classList.add("active");
+                }
+                var nav_link = document.getElementById(element.dataset.load);
+                if (nav_link !== null) {
+                    document.querySelectorAll(".explorer_btn").forEach(nav_item => {
+                        nav_item.classList.remove("active");
+                    });
+                    nav_link.classList.add("active");
+                }
+            });
+        });
+    }
 </script>

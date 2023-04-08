@@ -20,6 +20,10 @@ nav .container-fluid {
     padding-left: 0.9rem!important;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 .navbar {
     line-height: 15px;
     background-color: #21262d!important;
@@ -96,4 +100,71 @@ nav .container-fluid {
 
 .flexauto {
     flex: auto;
+}
+
+.explorer .row a {
+    text-decoration: none!important;
+    color: white!important;
+    cursor: pointer!important;
+    padding: 0.15rem 0.95rem;
+    text-transform: lowercase;
+}
+
+.explorer .row {
+    padding: 0.15rem 0rem;
+    margin-right: calc(-0.44 * var(--bs-gutter-x))!important;
+    margin-left: calc(-0.65 * var(--bs-gutter-x))!important;
+    padding: 0px!important;
+}
+
+.explorer .row:hover {
+    background-color: #1f262e!important;
+}
+
+.explorer_btn.active {
+    background-color: #21262d!important;
+}
+
+.explorer .bold p {
+    margin-bottom: 0.3rem;
+    font-size: 10px;
+}
+
+.va-mid {
+    vertical-align: middle;
+}
+
+.codicon-nostyle {
+    text-align: left!important;
+    padding: 0rem!important;
+    height: unset!important;
+    display: inline-block!important;
+    justify-content: unset;
+    align-items: unset;
+    font-size: 12px!important;
+}
+
+.row-npad>* {
+    padding: 0px!important;
+}
+
+.explorer .row-npad {
+    cursor: pointer;
+}
+
+.row-npad i {
+    padding-right: 0.15rem!important;
+    padding-left: 0.15rem!important;
+}
+
+.explorer .row-npad:hover {
+    background-color: unset!important;
+}
+
+.mr-02 {
+    margin-right: 0.2rem;
+}
+
+.ml-02 {
+    margin-left: 0.2rem;
 }

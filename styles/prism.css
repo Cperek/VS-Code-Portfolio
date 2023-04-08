@@ -27,7 +27,7 @@ pre[class*=language-] {
 }
 
 code[class*=language-] {
-    color: #fff;
+    color: #91acd2;
 }
 
 :not(pre)>code[class*=language-] {
@@ -75,13 +75,13 @@ code[class*=language-] {
 .token.operator,
 .token.url,
 .token.variable {
-    color: #9acd32
+    color: #46d45c
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-    color: #ff1493
+    color: #bf404f
 }
 
 .token.important,

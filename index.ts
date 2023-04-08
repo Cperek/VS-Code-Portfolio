@@ -1,14 +1,17 @@
 
 
 
-window.onload = function(){
-    loadHTML("views/head.html","header");
-    loadHTML("views/nav/top-system.html","system-top-nav");
-    loadHTML("views/body/maingrid.html","maingrid",true);
-    loadHTML("views/scripts.html","scripts");
-  };
+window.onload =  function(){
+     loadHTML("views/head.html","header");
+     loadHTML("views/nav/top-system.html","system-top-nav");
+     loadHTML("views/body/maingrid.html","maingrid",true);
+     loadHTML("views/scripts.html","scripts");
+
+     
+}
 
 
+    
 
 
 async function loadHTML(file: string, elementID: string,loadScript: boolean = false) {
