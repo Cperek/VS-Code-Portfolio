@@ -2,10 +2,10 @@
     <code id="snippet"></code>
 </div>
 <script>
-    loadHTML("index.js", "snippet", false).then(
+    loadHTML("tsconfig.json", "snippet", false).then(
         function() {
             setTimeout(() => {
-                makeSnippet(document.getElementById("snippet"), 'js');
+                makeSnippet(document.getElementById("snippet"), 'JSON');
             }, 50);
         }
     );
