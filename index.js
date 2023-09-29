@@ -71,7 +71,7 @@ function loadHTML(file, elementID, loadScript) {
             else {
                 console.log("ERROR - file or element ID are empty!");
             }
-            return [2 /*return*/];
+            return [2 /*return*/, true];
         });
     });
 }
@@ -85,5 +85,6 @@ function makeSnippet(element, lang) {
     if (window.Prism) {
         Prism.highlightAll(false);
     }
+    return true;
 }
 ;

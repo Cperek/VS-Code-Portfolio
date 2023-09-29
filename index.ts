@@ -50,6 +50,7 @@ xhttp.send();
 {
 console.log("ERROR - file or element ID are empty!");
 }
+return true;
 }
 
 
@@ -63,5 +64,6 @@ function makeSnippet(element: Element,lang: string = 'markup'){
         if(window.Prism){
             Prism.highlightAll(false);
         }
+        return true;
   };
   
